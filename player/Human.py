@@ -40,7 +40,7 @@ class Human(Player):
         elif(isinstance(Feedback.GAME_WON, feedback)):
             print("You have lost the game. :/")
 
-        elif(isinstance(Feedback.GAME_PAT, feedback)):
+        elif(isinstance(Feedback.GAME_DRAW, feedback)):
             print("The game is over and no one won.")
 
 

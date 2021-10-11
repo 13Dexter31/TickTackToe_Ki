@@ -5,4 +5,4 @@ class Feedback(Enum):
     WRONG_INPUT = 2
     GAME_LOST = 3
     GAME_WON = 4
-    GAME_PAT = 5
+    GAME_DRAW = 5
