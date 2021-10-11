@@ -5,7 +5,7 @@ from player.Player import Player
 
 class Randy(Player):
 
-    def getPosition(self):
+    def getPosition(self, board):
         return Position(randint(1, 3), self.getRandomRow())
 
     def getRandomRow(self):

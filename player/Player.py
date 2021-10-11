@@ -6,7 +6,7 @@ class Player():
 
     def makeMove(self, board):
 
-        position = self.getPosition()
+        position = self.getPosition(board)
 
         if(not board.isEmpty(position)):
             self.giveFeedback(Feedback.PLACE_OCCUPIED)
@@ -15,7 +15,7 @@ class Player():
         return position
 
     @abstractmethod
-    def getPosition(self):
+    def getPosition(self, board):
         pass
 
     @abstractmethod

@@ -3,7 +3,9 @@ from player.Player import Player
 
 class Human(Player):
 
-    def getPosition(self):
+    def getPosition(self, board):
+
+        board.visualize()
         return Position(self.getColumn(), self.getRow())
 
     def getColumn(self):
