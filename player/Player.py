@@ -8,7 +8,7 @@ class Player():
 
         position = self.getPosition(board)
 
-        if(not board.isEmpty(position)):
+        if(not board.update(position)):
             self.giveFeedback(Feedback.PLACE_OCCUPIED)
             position = self.makeMove(board)
 
