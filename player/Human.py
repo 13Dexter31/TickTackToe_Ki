@@ -31,3 +31,14 @@ class Human(Player):
 
         elif(isinstance(Feedback.WRONG_INPUT, feedback)):
             print("This is no valid input.\nPlease choose from the options between the braces.\n")
+
+        elif(isinstance(Feedback.GAME_LOST, feedback)):
+            print("You have won the game! :)")
+
+        elif(isinstance(Feedback.GAME_WON, feedback)):
+            print("You have lost the game. :/")
+
+        elif(isinstance(Feedback.GAME_PAT, feedback)):
+            print("The game is over and no one won.")
+
+
