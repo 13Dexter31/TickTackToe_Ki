@@ -1,7 +1,5 @@
 from abc import abstractmethod
 
-from player.Feedback import Feedback
-
 class Player():
 
     def __init__(self, representationChar) -> None:
@@ -17,5 +15,3 @@ class Player():
     @abstractmethod
     def giveFeedback(self):
         pass
-
-
