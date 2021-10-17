@@ -4,18 +4,14 @@ from player.Feedback import Feedback
 
 class Player():
 
-    def makeMove(self, board):
+    def __init__(self, representationChar) -> None:
+        self.representationChar = representationChar
 
-        position = self.getPosition(board)
-
-        if(not board.update(position)):
-            self.giveFeedback(Feedback.PLACE_OCCUPIED)
-            position = self.makeMove(board)
-
-        return position
+    def __str__(self):
+        return self.representationChar
 
     @abstractmethod
-    def getPosition(self, board):
+    def makeMove(self, board):
         pass
 
     @abstractmethod

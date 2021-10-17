@@ -3,15 +3,21 @@ from player.Player import Player
 
 class Human(Player):
 
-    def getPosition(self, board):
+    def makeMove(self, board):
 
-        board.visualize()
+        print(board)
         return Position(self.getColumn(), self.getRow())
 
     def getColumn(self):
 
         column = input("Enter column [A|B|C]: ")
-        if (column.__eq__("A") or column.__eq__("B") or column.__eq__("C")):
+        if column.__eq__("a") or column.__eq__("A"):
+            return 0
+        elif column.__eq__("b") or column.__eq__("B"):
+            return 1
+        elif column.__eq__("c") or column.__eq__("C"):
+            return 2
+        else:
             self.giveFeedback(Feedback.WRONG_INPUT)
             column = self.getColumn()
 
@@ -28,19 +34,17 @@ class Human(Player):
 
     def giveFeedback(self, feedback):
 
-        if (isinstance(Feedback.PLACE_OCCUPIED, feedback)):
+        if Feedback.PLACE_OCCUPIED == feedback:
             print("Die Position ist bereits besetzt!")
 
-        elif(isinstance(Feedback.WRONG_INPUT, feedback)):
+        elif Feedback.WRONG_INPUT == feedback:
             print("This is no valid input.\nPlease choose from the options between the braces.\n")
 
-        elif(isinstance(Feedback.GAME_LOST, feedback)):
-            print("You have won the game! :)")
-
-        elif(isinstance(Feedback.GAME_WON, feedback)):
+        elif Feedback.GAME_LOST == feedback:
             print("You have lost the game. :/")
 
-        elif(isinstance(Feedback.GAME_DRAW, feedback)):
+        elif Feedback.GAME_WON == feedback:
+            print("You have won the game! :)")
+
+        elif Feedback.GAME_DRAW == feedback:
             print("The game is over and no one won.")
-
-
