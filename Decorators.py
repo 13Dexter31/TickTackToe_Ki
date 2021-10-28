@@ -19,24 +19,35 @@ def debug(func):
     return wrapper_debug
 
 
-def log(humanReadable=False, kiReadable=False):
+def log(humanReadable=False, aiReadable=False):
+    """
+    Logs game data for human player and ai player and writes it to a file
+    :param humanReadable: line in file: "Move:[ ... , ... ] Board: ..."
+    :param aiReadable: line in file: "[row,column]"
+    """
     if humanReadable == True:
         def decorator_human_writeToFile(func):
             @functools.wraps(func)
             def wrapper(*args, **kwargs):
                 value = func(*args, **kwargs)
-                outfile = open("humanLogFile", 'wb')
-                pickle.dump(value, outfile)
+                outfile = open("humanLogFile.pkl", 'ab')
+                pickle.dump(f"Move:{value} Board:{args[1]}\n", outfile)
                 outfile.close()
+                return value
+            return wrapper
+        return decorator_human_writeToFile
 
-    if kiReadable == True:
+    if aiReadable == True:
         def decorator_ki_writeToFile(func):
             @functools.wraps(func)
             def wrapper(*args, **kwargs):
                 value = func(*args, **kwargs)
-                outfile = open("kiLogFile", 'wb')
+                outfile = open("aiLogFile.pkl", 'ab')
                 pickle.dump(value, outfile)
                 outfile.close()
+                return value
+            return wrapper
+    return decorator_ki_writeToFile
 
 
 def timer(func):
