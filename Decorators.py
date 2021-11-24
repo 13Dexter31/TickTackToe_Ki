@@ -2,6 +2,7 @@ import functools
 import time
 import pickle
 
+log_list = []
 
 def debug(func):
     """Ausgabe der Signatur und des Rückgabewertes der Funktion"""
@@ -42,8 +43,9 @@ def log(humanReadable=False, aiReadable=False):
             @functools.wraps(func)
             def wrapper(*args, **kwargs):
                 value = func(*args, **kwargs)
-                outfile = open("aiLogFile.pkl", 'ab')
-                pickle.dump(value, outfile)
+                log_list.append(value)
+                outfile = open("aiLogFile.pkl", 'wb')
+                pickle.dump(log_list, outfile)
                 outfile.close()
                 return value
             return wrapper
