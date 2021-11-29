@@ -7,7 +7,11 @@ human_log_list = []
 
 
 def debug(func):
-    """Ausgabe der Signatur und des Rückgabewertes der Funktion"""
+    """
+    Output of the signature and the return value of given function
+    :param func -> decorated function
+    :return wrapper text and actual output of decorated function
+    """
 
     @functools.wraps(func)
     def wrapper_debug(*args, **kwargs):
@@ -59,7 +63,11 @@ def log(humanReadable=False, aiReadable=False):
 
 
 def timer(func):
-    """Ausgabe der Laufzeit einer Funktion"""
+    """
+    Output of the runtime of given function
+    :param func -> decorated function
+    :return wrapper text and actual output of decorated function
+    """
 
     @functools.wraps(func)
     def wrapper_timer(*args, **kwargs):
