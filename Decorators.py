@@ -2,7 +2,9 @@ import functools
 import time
 import pickle
 
-log_list = []
+ai_log_list = []
+human_log_list = []
+
 
 def debug(func):
     """Ausgabe der Signatur und des Rückgabewertes der Funktion"""
@@ -26,41 +28,46 @@ def log(humanReadable=False, aiReadable=False):
     :param humanReadable: line in file: "Move:[ ... , ... ] Board: ..."
     :param aiReadable: line in file: "[row,column]"
     """
-    if humanReadable == True:
+    if humanReadable:
         def decorator_human_writeToFile(func):
             @functools.wraps(func)
             def wrapper(*args, **kwargs):
                 value = func(*args, **kwargs)
+                human_log_list.append(f"Move:{value} Board:{args[1]}\n")
                 outfile = open("humanLogFile.pkl", 'ab')
-                pickle.dump(f"Move:{value} Board:{args[1]}\n", outfile)
+                pickle.dump(human_log_list, outfile)
                 outfile.close()
                 return value
+
             return wrapper
+
         return decorator_human_writeToFile
 
-    if aiReadable == True:
+    if aiReadable:
         def decorator_ki_writeToFile(func):
             @functools.wraps(func)
             def wrapper(*args, **kwargs):
                 value = func(*args, **kwargs)
-                log_list.append(value)
+                ai_log_list.append(value)
                 outfile = open("aiLogFile.pkl", 'wb')
-                pickle.dump(log_list, outfile)
+                pickle.dump(ai_log_list, outfile)
                 outfile.close()
                 return value
+
             return wrapper
     return decorator_ki_writeToFile
 
 
 def timer(func):
     """Ausgabe der Laufzeit einer Funktion"""
+
     @functools.wraps(func)
     def wrapper_timer(*args, **kwargs):
-        start_time = time.perf_counter()    # Startzeit
+        start_time = time.perf_counter()  # Startzeit
         value = func(*args, **kwargs)
-        end_time = time.perf_counter()      # Endzeit
-        run_time = end_time - start_time    # Gesamte Laufzeit
+        end_time = time.perf_counter()  # Endzeit
+        run_time = end_time - start_time  # Gesamte Laufzeit
         print(f"Finished {func.__name__!r} in {run_time:.4f} secs")
         return value
-    return wrapper_timer
 
+    return wrapper_timer
