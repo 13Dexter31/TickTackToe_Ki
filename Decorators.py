@@ -1,6 +1,7 @@
 import functools
 import time
 import pickle
+import dill
 
 ai_log_list = []
 human_log_list = []
@@ -60,6 +61,21 @@ def log(humanReadable=False, aiReadable=False):
 
             return wrapper
     return decorator_ki_writeToFile
+
+
+def save_q_table(func):
+    """
+    Logs game data for human player and ai player and writes it to a file
+    :param func: decorated function
+    """
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        value = func(*args, **kwargs)
+        with open('qtable.pkl', 'wb') as handle:
+            dill.dump(value, handle)
+        return value
+
+    return wrapper
 
 
 def timer(func):
