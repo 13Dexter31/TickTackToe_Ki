@@ -1,0 +1,5 @@
+- pretty print
+- Draw.io klassendiagramm
+- Statistics
+- Generalisierung/Wiederverwendbarkeit des QLearner
+- Bereinigung von Codesemell
