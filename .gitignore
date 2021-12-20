@@ -1,2 +1,3 @@
 *.py
-!build.py
+build
+output
