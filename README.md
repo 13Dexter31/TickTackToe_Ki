@@ -8,6 +8,8 @@ Projekt ist in der folgenden Modulstruktur aufgebaut:
 
 <img src="docs/uml/ProjectStructure.drawio.png" alt="drawing" width="700"/>
 
+Alle relevanten Skripte sind unter src/ zufinden. Die Dokumentationen und Berichte sind jeweils in den entsprechenden Notebooks zu den jeweiligen Klassen zu finden. 
+
 ## Infos zum Starten
 
 Folgende Libs **müssen** zuvor installiert werden, damit alles funktioniert:
