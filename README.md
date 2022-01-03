@@ -2,6 +2,8 @@
 
 Coderepository for Module INFM2100 for Autumnsemester 2021/2
 
+In diesem Projekt werden zwei Ansätze einer Wertebasierten KI für ein TicTacToe Spiel dargestellt.
+
 Projekt ist in der folgenden Modulstruktur aufgebaut:
 
 <img src="docs/uml/ProjectStructure.drawio.png" alt="drawing" width="700"/>
